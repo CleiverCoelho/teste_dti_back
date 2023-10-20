@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_backend
+    ports: 
+      - 5433:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - backend-network
+    volumes:
+      - backend-volume:/var/lib/postgresql/data
+  
+  backend:
+    build: ./
+    container_name: backend
+    ports: 
+      - 3000:3000
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/desafio-back?schema=public
+      - PORT=3000
+    networks:
+      - backend-network
+    depends_on:
+      - postgres
+
+networks:
+  backend-network:
+
+volumes:
+  backend-volume:
