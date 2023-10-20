@@ -1,7 +1,8 @@
-import petshopRepository from "repositories/petshop-repository";
+import { CreatePetshop } from "protocols";
+import petshopRepository from "../repositories/petshop-repository";
 
-async function createPetshop() {
-  const participantRes = await petshopRepository.createPetshop();
+async function createPetshop(petshop: CreatePetshop) {
+  const participantRes = await petshopRepository.createPetshop(petshop);
 
   return participantRes;
 }

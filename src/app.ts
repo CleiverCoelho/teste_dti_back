@@ -3,7 +3,7 @@ import "express-async-errors";
 import dotenv from "dotenv";
 
 import { handleApplicationErrors } from "./middlewares/error-handler";
-import betsRouter from "./routers/bets-router";
+import petshopRouter from "./routers/petshop-router";
 
 dotenv.config();
 

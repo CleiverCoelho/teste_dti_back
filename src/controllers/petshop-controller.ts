@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
-import petshopService from "services/petshop-service";
+import { CreatePetshop } from "protocols";
+import petshopService from "../services/petshop-service";
 
 export async function createPetshop(req: Request, res: Response, next: NextFunction) {
-  const petshopInput = req.body;
+  const petshopInput = req.body as CreatePetshop;
   try {
     const response = await petshopService.createPetshop(petshopInput);
     res.send(response).status(httpStatus.CREATED);
