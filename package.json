@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "test:load-envs": "dotenv -e .env.test",
-    "test": "npm run migrate:test && jest --runInBand",
+    "test": "npm run migrate:test && jest",
     "test:coverage": "npm run test:load-envs -- jest -- --coverage --runInBand",
     "migrate:test": "npm run test:load-envs prisma migrate deploy",
     "dev:load-envs": "dotenv -e .env",

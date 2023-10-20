@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
-import { CreatePetshop } from "protocols";
+import { CreatePetshop } from "../protocols";
 import petshopService from "../services/petshop-service";
 
 export async function createPetshop(req: Request, res: Response, next: NextFunction) {

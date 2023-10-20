@@ -1,5 +1,5 @@
 import joi from "joi";
-import { CreatePetshop } from "protocols";
+import { CreatePetshop } from "../protocols";
 
 export const createPetshopSchema = joi.object<CreatePetshop>({
   name: joi.string().required(),

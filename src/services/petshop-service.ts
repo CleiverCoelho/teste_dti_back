@@ -1,4 +1,4 @@
-import { CreatePetshop } from "protocols";
+import { CreatePetshop } from "../protocols";
 import petshopRepository from "../repositories/petshop-repository";
 
 async function createPetshop(petshop: CreatePetshop) {

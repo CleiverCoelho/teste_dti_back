@@ -1,4 +1,4 @@
-import { CreatePetshop } from "protocols"
+import { CreatePetshop } from "../protocols"
 import prisma from "../database"
 
 async function getPetshops() {
