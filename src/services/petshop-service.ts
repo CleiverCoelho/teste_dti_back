@@ -29,8 +29,7 @@ async function checkBestPetshop(petDayInfos: BestPetshop) {
       hashPetshop[petshop.name] = totalPrice;    
      }
   })
-  // console.log(hashPetshop);
-  // console.log(checkCheaperPetshop(hashPetshop, petshopRes))
+
   const bestPetshop = checkCheaperPetshop(hashPetshop, petshopRes)
   return bestPetshop;
 }
