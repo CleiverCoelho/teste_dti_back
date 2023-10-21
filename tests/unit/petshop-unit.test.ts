@@ -62,7 +62,7 @@ describe("Petshop Service Unit Tests", () => {
       ]);
     
       const petshops = await petshopService.checkBestPetshop({date: "21/10/2023", bigSizesCount: 1, smallSizesCount: 1});
-      expect(petshops).toEqual(pet1);
+      expect(petshops).toEqual({...pet1, totalPrice: 20});
     });
 
     it("should return the closest petshop option if the price is a tie", async () => {
@@ -96,7 +96,7 @@ describe("Petshop Service Unit Tests", () => {
       ]);
     
       const petshops = await petshopService.checkBestPetshop({date: "21/10/2023", bigSizesCount: 1, smallSizesCount: 1});
-      expect(petshops).toEqual(pet2);
+      expect(petshops).toEqual({...pet2, totalPrice: 20});
     });
 
     
