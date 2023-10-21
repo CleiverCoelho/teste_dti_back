@@ -90,6 +90,7 @@ describe("Petshop Service Unit Tests", () => {
         createdAt: new Date(), 
         updatedAt: new Date()
       }
+      
       jest.spyOn(petshopRepository, "getPetshops").mockResolvedValueOnce([
         pet1, pet2
       ]);
