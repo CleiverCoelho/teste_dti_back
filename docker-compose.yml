@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres
-    container_name: postgres_backend
+    container_name: postgres_backend_dti
     ports: 
       - 5433:5432
     environment:
@@ -13,7 +13,7 @@ services:
   
   backend:
     build: ./
-    container_name: backend
+    container_name: backend_dti
     ports: 
       - 3000:3000
     environment:
