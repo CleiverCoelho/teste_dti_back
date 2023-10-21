@@ -19,19 +19,18 @@ async function checkBestPetshop(petDayInfos: BestPetshop) {
   const petshopRes = await petshopRepository.getPetshops();
   const isWeekend = checkForWeekEnd(petDayInfos.date);
   const hashPetshop : { [key: string] : number } = {}
-  
   const pricesPerPetshop = petshopRes.map((petshop, index) => {
      if(isWeekend) {
         const totalPrice = calculateFinalPrice(petshop.weekEndBigPrice, petshop.weekEndSmallPrice, petDayInfos);
         hashPetshop[petshop.name] = totalPrice;
      }else{
-      const totalPrice = calculateFinalPrice(petshop.weekDayBigPrice, petshop.weekDaySmallPrice, petDayInfos);
-      hashPetshop[petshop.name] = totalPrice;    
+        const totalPrice = calculateFinalPrice(petshop.weekDayBigPrice, petshop.weekDaySmallPrice, petDayInfos);
+        hashPetshop[petshop.name] = totalPrice;    
      }
   })
 
   const bestPetshop = checkCheaperPetshop(hashPetshop, petshopRes)
-  return bestPetshop;
+  return {...bestPetshop, totalPrice: hashPetshop[bestPetshop.name]};
 }
 
 function checkClosestPetshop(indexesOfSmallest: number[], petshopRes: Petshop[]) {
