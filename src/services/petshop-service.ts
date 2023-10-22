@@ -1,7 +1,8 @@
-import { func, string } from "joi";
 import { BestPetshop, CreatePetshop, HashPetshop } from "../protocols";
 import petshopRepository from "../repositories/petshop-repository";
 import { Petshop } from "@prisma/client";
+import dayjs from "dayjs";
+
 
 async function createPetshop(petshop: CreatePetshop) {
   const petshopRes = await petshopRepository.createPetshop(petshop);
@@ -76,7 +77,8 @@ function calculateFinalPrice(bigSizesPrice : number, smallSizesPrice: number, pe
 
 function checkForWeekEnd(date: string) {
   const weekDays = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
-  const weekDay = weekDays[(new Date(date)).getDay()]
+  const weekDay = weekDays[(new Date(date)).getDay()];
+  console.log(weekDay);
   if(weekDay === 'sab' || weekDay === 'dom') return true
   return false
 }
