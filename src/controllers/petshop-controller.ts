@@ -30,8 +30,8 @@ export async function checkBestPetshop(req: Request, res: Response, next: NextFu
   const petDayInfos = req.body as BestPetshop;
 
   try {
-    if((petDayInfos.bigSizesCount) / Math.floor(petDayInfos.bigSizesCount) !== 0) throw badRequestError("'bigSizesCount' must be a integer")
-    if((petDayInfos.smallSizesCount) / Math.floor(petDayInfos.smallSizesCount) !== 0) throw badRequestError("'smallSizesCount' must be a integer")
+    if(petDayInfos.bigSizesCount % 1 !== 0) throw badRequestError("'bigSizesCount' must be a integer")
+    if(petDayInfos.smallSizesCount % 1 !== 0) throw badRequestError("'smallSizesCount' must be a integer")
 
     const response = await petshopService.checkBestPetshop(petDayInfos);
     res.send(response).status(httpStatus.OK);
