@@ -17,6 +17,8 @@ async function getPetshops() {
 
 async function checkBestPetshop(petDayInfos: BestPetshop) {
   const petshopRes = await petshopRepository.getPetshops();
+  if(petshopRes.length === 0) return undefined;
+
   const isWeekend = checkForWeekEnd(petDayInfos.date);
   const hashPetshop : { [key: string] : number } = {}
   const pricesPerPetshop = petshopRes.map((petshop, index) => {
