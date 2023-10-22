@@ -8,7 +8,7 @@ Também pode seguir os passos a seguir para rodar a aplicação localmente
 - É preciso ter o sistema de controle de versões distribuído "Git" para seguir os comandos de instalação local (voce também pode baixar o zip do arquivo). 
 - Para evitar problemas com versões também aconselho rodar esta aplicação no Sistema Operacional do Linux Ubuntu 20.04
 - É preciso ter a versão do node acima da 18, pois estou utilizando o prisma como typeORM para meu banco de dados.
-- Na mesma linha de raciocínio é preciso ter o postgreSQL instalado em sua maquina
+- Na mesma linha de raciocínio é preciso ter o postgreSQL instalado em sua maquina (no entanto o banco de dados está deployado junto ao deploy da api no backend)
 
 # How to install
 
