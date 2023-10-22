@@ -32,26 +32,26 @@ describe("Petshop Service Unit Tests", () => {
       });
     });
 
-    it("should return the best petshop option", async () => {
+    it("should return the closest petshop option if the price is a tie", async () => {
       const petshop = buildPetshopInput();
       const pet1 = {
-        name: "teste1",
-        distance: 100, 
-        weekDayBigPrice: 10, 
-        weekDaySmallPrice: 10, 
-        weekEndBigPrice: 10, 
-        weekEndSmallPrice: 10, 
+        name: "Meu caninho Feliz",
+        distance: 500, 
+        weekDayBigPrice: 40, 
+        weekDaySmallPrice: 20, 
+        weekEndBigPrice: 48, 
+        weekEndSmallPrice: 24, 
         id: 1, 
         createdAt: new Date(), 
         updatedAt: new Date()
       }
 
       const pet2 = {
-        name: "teste2",
+        name: "Vai rex",
         distance: 100, 
-        weekDayBigPrice: 20, 
-        weekDaySmallPrice: 20, 
-        weekEndBigPrice: 20, 
+        weekDayBigPrice: 50, 
+        weekDaySmallPrice: 15, 
+        weekEndBigPrice: 55, 
         weekEndSmallPrice: 20, 
         id: 2, 
         createdAt: new Date(), 
@@ -61,42 +61,41 @@ describe("Petshop Service Unit Tests", () => {
         pet1, pet2
       ]);
     
-      const petshops = await petshopService.checkBestPetshop({date: "21/10/2023", bigSizesCount: 1, smallSizesCount: 1});
-      expect(petshops).toEqual({...pet1, totalPrice: 20});
+      const petshops = await petshopService.checkBestPetshop({date: "2023-10-24T14:15:14.362Z", bigSizesCount: 1, smallSizesCount: 2});
+      expect(petshops).toEqual({...pet2, totalPrice: 80});
     });
 
-    it("should return the closest petshop option if the price is a tie", async () => {
+    it("should return the best petshop option", async () => {
       const petshop = buildPetshopInput();
       const pet1 = {
-        name: "teste1",
+        name: "Meu caninho Feliz",
         distance: 500, 
-        weekDayBigPrice: 10, 
-        weekDaySmallPrice: 10, 
-        weekEndBigPrice: 10, 
-        weekEndSmallPrice: 10, 
+        weekDayBigPrice: 40, 
+        weekDaySmallPrice: 20, 
+        weekEndBigPrice: 48, 
+        weekEndSmallPrice: 24, 
         id: 1, 
         createdAt: new Date(), 
         updatedAt: new Date()
       }
 
       const pet2 = {
-        name: "teste2",
+        name: "Vai rex",
         distance: 100, 
-        weekDayBigPrice: 10, 
-        weekDaySmallPrice: 10, 
-        weekEndBigPrice: 10, 
-        weekEndSmallPrice: 10, 
+        weekDayBigPrice: 50, 
+        weekDaySmallPrice: 15, 
+        weekEndBigPrice: 55, 
+        weekEndSmallPrice: 20, 
         id: 2, 
         createdAt: new Date(), 
         updatedAt: new Date()
       }
-      
       jest.spyOn(petshopRepository, "getPetshops").mockResolvedValueOnce([
         pet1, pet2
       ]);
     
-      const petshops = await petshopService.checkBestPetshop({date: "21/10/2023", bigSizesCount: 1, smallSizesCount: 1});
-      expect(petshops).toEqual({...pet2, totalPrice: 20});
+      const petshops = await petshopService.checkBestPetshop({date: "2023-10-22T14:15:14.362Z", bigSizesCount: 1, smallSizesCount: 1});
+      expect(petshops).toEqual({...pet1, totalPrice: 72});
     });
 
     
