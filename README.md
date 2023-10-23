@@ -12,6 +12,7 @@ Também pode seguir os passos a seguir para rodar a aplicação localmente
 
 ## Decisoes de projeto
 - Utilização de Nodejs para o desenvolvimento do Back-End para: facilitar a instalção local do projeto, utilizando o mesmo ecosssistema de gerenciamento de pacotes do front (npm); agilizar o desenvolvimento e a manutenção da aplicação utilizando javascript unificado (cliente/servidor)
+- Criação da api em Typescript para tipagem expressa de dados e com isso, agilidade em tempo de desenvolvimento.
 - Utilização do typeORM chamado prisma, para maior facilidade de manipulação do banco de dados para novas features atarvés de migrations e codigo menos verboso na camada "repositories". (ex de nova feature: adicionar novas configurações de petshops para base do canil em outra localidade, implicando diferentes distancias, relações e constraints no banco relacional)
 - Realização de testes de integração e unitários com as ferramentas jest e supertest, com a finalidade de testar a api de ponta a ponta e as principais regras de negocio, na camada "service" da aplicação. (ex: retorno do petshop mais proximo em caso de empate no preço total) 
 
