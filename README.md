@@ -47,46 +47,7 @@ Rode o comando "start", que já inclui qualquer migração para o banco de dados
 npm start
 ```
 
-# Passos para docker com DockerFile
-
-Primeiro, cheque se voce não tem nenhum container, network ou imagens com os mesmos nomes daqueles usados nesse passo a passo. Feito isso, no diretorio raiz...
-
-Construa a imagem do backend:
-```bash
-docker build -t backend .
-```
-
-Crie uma network para conectar a api do back-end com o banco de dados:
-```bash
-docker network create backend-network
-```
-
-Crie um volume do docker para salvar as informações do banco de dados:
-```bash
-docker volume create backend-volume
-```
-Rode o container do postgres dentro de uma mesma network e credenciais do postgres:
-```bash
-docker run -d 
-  --name postgres 
-  --network backend-network 
-  -e POSTGRES_PASSWORD=postgres 
-  -p 5433:5432 
-  -v backend-volume:/var/lib/postgresql/data
-postgres
-```
-
-Então, rode o backend dentro da mesma network
-```bash
-docker run -d 
-  --name backend 
-  --network backend-network 
-  -e DATABASE_URL="postgresql://postgres:postgres@postgres:5432/desafio_back_dti?schema=public" 
-  -p 3000:3000 
-backend
-```
-
-Seu server está pronto e rodando na porta 3000!
+Pronto! sua aplicação está rodando localmente na porta 5000! 
 
 # Passos para testes de integração e unitarios
 To see the tests runnning:
