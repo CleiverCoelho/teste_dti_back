@@ -10,6 +10,11 @@ Também pode seguir os passos a seguir para rodar a aplicação localmente
 - É preciso ter a versão do node acima da 18, pois estou utilizando o prisma como typeORM para meu banco de dados.
 - Na mesma linha de raciocínio é preciso ter o postgreSQL instalado em sua maquina (no entanto o banco de dados está deployado junto ao deploy da api no backend)
 
+## Decisoes de projeto
+- Utilização de Nodejs para o desenvolvimento do Back-End para: facilitar a instalção local do projeto, utilizando o mesmo ecosssistema de gerenciamento de pacotes do front (npm); agilizar o desenvolvimento e a manutenção da aplicação utilizando javascript unificado (cliente/servidor)
+- Utilização do typeORM chamado prisma, para maior facilidade de manipulação do banco de dados para novas features atarvés de migrations e codigo menos verboso na camada "repositories". (ex de nova feature: adicionar novas configurações de petshops para base do canil em outra localidade, implicando diferentes distancias, relações e constraints no banco relacional)
+- Realização de testes de integração e unitários com as ferramentas jest e supertest
+
 # How to install
 
 Clone com HTTPS:
